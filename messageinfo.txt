@@ -1,0 +1,3 @@
+Time: 09:04:55 PM, From: Alice, To: Bob, Text: hi bob howdy
+Time: 09:05:10 PM, From: Alice, To: Alice, Text: myself
+Time: 09:09:29 PM, From: Alice, To: Bob, Text: Batau tujhe?

@@ -1,0 +1,30 @@
+Version 1 (Current)
+OOP
+File handling
+Two users (manual login)
+Timestamps
+Read/write messages from a text file
+
+Version 2
+Multiple conversations
+Better message formatting
+Search messages
+Delete messages
+Error handling
+
+Still just using text files.
+
+Version 3
+
+Learn the socket module.
+
+Now your project becomes:
+
+client.py
+server.py
+
+The server stores messages in memory or in a file, and clients send/receive them.
+
+Version 4
+
+After you learn SQL, replace the text files with SQLite.
