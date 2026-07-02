@@ -1,3 +1,5 @@
-Time: 09:04:55 PM, From: Alice, To: Bob, Text: hi bob howdy
-Time: 09:05:10 PM, From: Alice, To: Alice, Text: myself
-Time: 09:09:29 PM, From: Alice, To: Bob, Text: Batau tujhe?
+Time: 08:52:42 PM, From: Alice, To: Bob, Text: i am pranking alex
+Time: 08:53:00 PM, From: Bob, To: Alice, Text: nah thats crazy
+Time: 08:53:12 PM, From: Bob, To: Alex, Text: hey bro
+Time: 12:57:06 AM, From: Charlie, To: Bob, Text: hi bob do you wanna be friends
+Time: 12:57:33 AM, From: Charlie, To: Alex, Text: do yk about bob
