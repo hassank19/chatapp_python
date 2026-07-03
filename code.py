@@ -2,31 +2,6 @@ from classes import User
 from classes import Message
 from datetime import datetime
 
-user1 = User("Alice", 20)
-user2 = User("Bob", 21)
-user3 = User("Charlie", 18)
-user4 = User("Alex", 19)
-
-"""
-def find_right_users(sender, reciever):
-    current_user = sender.username
-    current_reciever = reciever.username
-    print("lol checking it its workin")
-    try:
-        with open("messageinfo.txt", "r") as chatfile:
-            for line in chatfile:
-                if len(parts) >= 4:
-                    parts = line.strip().split(", ")
-                    msg_sender = parts[1].replace("From: ", "")
-                    msg_reciever = parts[2].replace("To: ", "")
-                    if (current_user == msg_sender and current_reciever == msg_reciever) or (current_user == msg_reciever and current_reciever == msg_sender):
-                        return 1
-                    else:
-                        return 0
-    except FileNotFoundError:
-        print("Something went wrong")
-"""
-
 def search_msg(sender, reciever):
     current_user = sender.username
     current_reciever = reciever.username
@@ -40,7 +15,7 @@ def search_msg(sender, reciever):
                 msg_sender = parts[1].replace("From: ", "")
                 msg_reciever = parts[2].replace("To: ", "")
                 my_text = parts[3].replace("Text: ", "")
-                if (current_user == msg_sender and current_reciever == msg_reciever) or (current_user == msg_reciever and current_reciever == msg_sender) and string in my_text:
+                if ((current_user == msg_sender and current_reciever == msg_reciever) or (current_user == msg_reciever and current_reciever == msg_sender)) and string in my_text:
                     found = True
                     search_result.append(f"{line}\n")    
             if found:
@@ -172,13 +147,82 @@ def after_login(sender):
             break
 
 #-----------------------------------------------------
-print("---Login---")
-for x in range(len(User.users)): 
-    print(f"{x+1}: {User.users[x].username}")
+def find_user_index_inlist(uid):
+    index = 0
+    for x in range(len(User.users)):
+        if uid == User.users[x].username:
+            index = x
+            break
+    return index
 
 
-login_ui = int(input("Enter the number to login: "))
-print("---------------")
-sender_temp = User.users[login_ui - 1] #this is storing the object at that index
 
-after_login(sender_temp)
+def login():
+    user_id = input("Enter your username: ")
+    password = input("Enter a password: ")
+    found = False
+    with open("udatabase.txt", "r") as database:
+        for line in database:
+            parts = line.strip().split(", ")
+            username_ = parts[0].strip()
+            pass_ = parts[2].strip()
+            if (user_id == username_) and (password == pass_):
+                found = True
+                break
+    if found:
+        print("Logged In!")
+        index = find_user_index_inlist(user_id)
+        current_user = User.users[index]
+        after_login(current_user)
+    else:
+        print("Invalid user or password, try again?")
+
+
+def sign_up():
+
+    user_id = input("Enter a username: ")
+    password = input("Make a password: ")
+    found = False
+    with open("udatabase.txt", "r") as database:
+        for line in database:
+            parts = line.strip().split(", ")
+            username_ = parts[0].strip()
+            pass_ = parts[2].strip()
+            if (user_id == username_):
+                found = True
+                break
+    if found:
+        print("Username already exists, try another username")
+    else:
+        age = int(input("Enter your age: "))
+        new_user = User(user_id, age, password)
+        with open("udatabase.txt", "a") as database:
+            database.write(f"{new_user.username}, {new_user.age}, {new_user.password}\n")
+        print("Signed in")
+        index = find_user_index_inlist(user_id)
+        current_user = User.users[index]
+        after_login(current_user)
+
+
+def load_users(): #whenever u run the code, the new users created after signing in are stored permennantly in the database file, but theyre stored in the User.users lists only until the runtime, so once program ends, the list becomes empty
+    with open("udatabase.txt", "r") as database: #by loading (reading database file) and appending in the list, we make all the operations possible
+        for line in database: #otherwise we would just have an empty list
+            parts = line.strip().split(", ")
+            user = parts[0]
+            age = parts[1]
+            passw = parts[2]
+            new_user = User(user, age, passw)
+
+
+load_users()
+ui = int(input("1: Sign Up\n2: Login \nChoose an operation: "))
+if ui == 1:
+    sign_up()
+if ui == 2:
+    login()
+
+#login_ui = int(input("Enter the number to login: "))
+#print("---------------")
+#sender_temp = User.users[login_ui - 1] #this is storing the object at that index
+
+#after_login(sender_temp)
