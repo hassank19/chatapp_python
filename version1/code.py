@@ -90,7 +90,7 @@ def delete_messages(sender, reciever):
     except FileNotFoundError:
         print("Something went wrong")
 
-def find_reciever(sender):
+def find_reciever(sender): #choose the destination user
     #for loop to make the user choose the person they want to send the message
     for x in range(len(User.users)): #just take the length of the list so that we can enumerate it (it will make it easy to find sender and receiver based on index)
         if (sender.username == User.users[x].username):
@@ -140,7 +140,7 @@ def after_login(sender):
             print("Invalid Input")
 
 #-----------------------------------------------------
-def find_user_index_inlist(uid):
+def find_user_index_inlist(uid): #after logging in (when u enter right user and pass), this function finds the index of the current user in the list users = []
     index = 0
     found = False
     for x in range(len(User.users)):
@@ -169,7 +169,7 @@ def login():
     if found:
         print("Logged In!")
         index = find_user_index_inlist(user_id)
-        current_user = User.users[index]
+        current_user = User.users[index] #sender object
         after_login(current_user)
     else:
         print("Invalid user or password, try again?")
@@ -208,7 +208,7 @@ def load_users(): #whenever u run the code, the new users created after signing 
             user = parts[0]
             age = parts[1]
             passw = parts[2]
-            new_user = User(user, age, passw)
+            new_user = User(user, age, passw)  #make a user object here, and since it calls the constructor, it appends the list users = []
 
 
 load_users()

@@ -1,30 +1,73 @@
-Version 1 (Current)
-OOP
-File handling
-Two users (manual login)
-Timestamps
-Read/write messages from a text file
+Version 2 — Real networking
 
-Version 2
-Multiple conversations
-Better message formatting
-Search messages
-Delete messages
-Error handling
 
-Still just using text files.
+sockets
+client-server architecture
+sending and receiving data
+serialization (strings over a network)
 
-Version 3
+The architecture becomes
 
-Learn the socket module.
+Client (Alice)
+        │
+        │
+     Socket
+        │
+        │
+Server
+        │
+        │
+     Socket
+        │
+        │
+Client (Bob)
 
-Now your project becomes:
+Version 3 — SQLite
 
-client.py
-server.py
+Replace
 
-The server stores messages in memory or in a file, and clients send/receive them.
+udatabase.txt
+messageinfo.txt
 
-Version 4
+with
 
-After you learn SQL, replace the text files with SQLite.
+chat.db
+
+You'll learn SQL by actually using it.
+
+Tables might look like
+
+Users
+------
+id
+username
+password
+age
+Messages
+---------
+id
+sender
+receiver
+text
+timestamp
+
+Searching messages becomes an SQL query instead of scanning the file.
+
+Version 4 — GUI
+
+Replace the terminal with something like
+
+Tkinter
+PySide6
+PyQt
+
+You'll learn event-driven programming.
+
+Version 5 — Security
+
+Add things like
+
+hashed passwords
+login sessions
+encrypted messages
+input sanitization
