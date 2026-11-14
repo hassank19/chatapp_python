@@ -46,11 +46,13 @@ chatapp/
 │
 ├── server.py
 ├── alice.py
+├── bob.py
+├── peter.py
 ├── userdb.db
 └── mydb.db
 ```
 
-*The filenames above are illustrative; adjust them to match the actual repository.*
+To simulate 2 users communicating, run any two files among peter.py, alice.py and bob.py
 
 ## Running the Application
 
