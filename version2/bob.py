@@ -36,7 +36,7 @@ def sign_up():
     print("SINGUP")
     user = input("Enter a username: ").strip()
     passw = input("Enter your password: ").strip()
-    request = f"{"SIGNUP"}|{user}|{passw}"
+    request = f"{'SIGNUP'}|{user}|{passw}"
     client.send(request.encode())
     server_response = client.recv(2048).decode()
     if server_response == "1":
@@ -50,7 +50,7 @@ def login():
     print("LOGIN")
     user = input("Enter your username: ").strip()
     passw = input("Enter your password: ").strip()
-    request = f"{"LOGIN"}|{user}|{passw}"
+    request = f"{'LOGIN'}|{user}|{passw}"
     client.send(request.encode())
     server_response = client.recv(2048).decode()
     if server_response == "1":
